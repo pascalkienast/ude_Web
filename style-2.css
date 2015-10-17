@@ -5,9 +5,7 @@ body {
 	background-color: #fff;
     }
 
-html, body, #map {
-      height: 100%;
-    }
+
 .top-bar {
 	background-color: #f46149;
 	padding: 10px;
