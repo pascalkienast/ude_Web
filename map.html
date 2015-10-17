@@ -31,7 +31,7 @@
     <script src="http://bl.ocks.org/d3noob/raw/8973028/2013-earthquake.js"></script>
     <script>
 
-        var map = L.map('map').setView([-41.5546,174.146], 10);
+        var map = L.map('map').setView([52.5076682,13.285055], 8);
         mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
@@ -40,7 +40,7 @@
             maxZoom: 18,
         }).addTo(map);
         
-        var heat = L.heatLayer(quakePoints,{
+        var heat = L.heatLayer(boxen,{
             radius: 20,
             blur: 15, 
             maxZoom: 17,
@@ -48,4 +48,4 @@
         
     </script>
 </body>
-</html> 
+</html> f
