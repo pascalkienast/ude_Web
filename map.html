@@ -1,41 +1,51 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset=utf-8 />
-  <title>Points as a heatmap</title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-
-  <!-- Load Leaflet from CDN-->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
-  <script src="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script>
-
-  <!-- Load Esri Leaflet from CDN -->
-  <script src="//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
-
-  <style>
-    body { margin:0; padding:0; }
-    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+    <title>Simple Leaflet Map with Heatmap </title>
+    <meta charset="utf-8" />
+    <link 
+        rel="stylesheet" 
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+    />
+    <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    html, body, #map {
+      height: 100%;
+    }
   </style>
+
 </head>
 <body>
+    <div id="map" style="width: 100%; height: 100%"></div>
 
-<!-- Include Leaflet.heat via rawgit.com, do not use in production -->
-<script src="https://rawgit.com/Leaflet/Leaflet.heat/gh-pages/dist/leaflet-heat.js"></script>
+    <script
+       src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+    </script>
+    
+    <script
+       src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js">
+    </script>
+    <script src="http://bl.ocks.org/d3noob/raw/8973028/2013-earthquake.js"></script>
+    <script>
 
-<!-- Load Heatmap Feature Layer from CDN -->
-<script src="https://cdn.jsdelivr.net/leaflet.esri.heatmap-feature-layer/1.0.2/esri-leaflet-heatmap-feature-layer-src.js"></script>
-
-<div id="map"></div>
-
-<script>
-  var map = L.map('map').setView([ 40.706, -73.926], 14);
-
-  L.esri.basemapLayer('Gray').addTo(map);
-
-  L.esri.heatmapFeatureLayer({
-    url: 'https://services.arcgis.com/rOo16HdIMeOBI4Mb/ArcGIS/rest/services/Graffiti_Reports/FeatureServer/0',
-    radius: 12
-  }).addTo(map);
-</script>
-
+        var map = L.map('map').setView([-41.5546,174.146], 10);
+        mapLink = 
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+        }).addTo(map);
+        
+        var heat = L.heatLayer(quakePoints,{
+            radius: 20,
+            blur: 15, 
+            maxZoom: 17,
+        }).addTo(map);
+        
+    </script>
 </body>
-</html>
+</html> 
