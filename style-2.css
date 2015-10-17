@@ -3,8 +3,11 @@ body {
 	font-size: 62.5%;
 	padding: 0;
 	background-color: #fff;
-}
+    }
 
+html, body, #map {
+      height: 100%;
+    }
 .top-bar {
 	background-color: #f46149;
 	padding: 10px;
